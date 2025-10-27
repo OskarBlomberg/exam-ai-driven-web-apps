@@ -1,6 +1,7 @@
 import {
   RunnableSequence,
   RunnablePassthrough,
+  RunnableBranch,
 } from "@langchain/core/runnables";
 import { standalonePrompt, answerChatPrompt } from "../chatTemplates";
 import { ChatOllama } from "@langchain/ollama";
@@ -10,6 +11,7 @@ import { retrieveDocs } from "../../utils/setupRetriever";
 
 const llm = new ChatOllama({
   model: "llama3.1:8b",
+  temperature: 0,
 });
 
 const standaloneChain = RunnableSequence.from([
@@ -38,3 +40,17 @@ export const chain = RunnableSequence.from([
   answerChatPrompt,
   llm,
 ]);
+
+const useChain = async ({ userInput, history }, cached) => {
+  let newCache = cached || "";
+
+  if (cached) {
+    // branch-call
+  } else {
+    const result = await chain.invoke({
+      userInput,
+      history,
+    });
+    return { ...result, newCache };
+  }
+};
