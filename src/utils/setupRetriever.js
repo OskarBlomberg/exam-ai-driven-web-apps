@@ -10,10 +10,10 @@ const supabaseclient = createClient(SUPABASE_URL, SUPABASE_API_KEY);
 
 const vectorStore = new SupabaseVectorStore(embeddings, {
   client: supabaseclient,
-  tableName: "documents", // default om man inte skickar in nåt här
-  queryName: "match_documents", // default om man inte skickar in nåt här
+  tableName: "documents",
+  queryName: "match_documents",
 });
 
-const retrieveDocuments = vectorStore.asRetriever();
+const retrieveDocs = vectorStore.asRetriever();
 
-export { retrieveDocuments };
+export { retrieveDocs };
