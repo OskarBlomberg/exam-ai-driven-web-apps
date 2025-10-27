@@ -20,7 +20,7 @@ try {
   });
 
   const output = await textSplitter.createDocuments([text]);
-  console.log(output);
+
   const client = createClient(SUPABASE_URL, SUPABASE_API_KEY);
 
   await SupabaseVectorStore.fromDocuments(
