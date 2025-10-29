@@ -1,28 +1,23 @@
 import { useState } from "react";
 import { Message } from "./components/Message";
-import { chain } from "./langchain/chains/chains";
-
-// Ta emot fråga och göra om till standalone question
-// Kolla om svaret finns i cache
-// Om inte, hämta från databas
+import { useChain } from "./langchain/chains/chains";
 
 function App() {
   const [messages, setMessages] = useState([]);
   const [isLoading, setIsLoading] = useState(false);
   const [streamMsg, setStreamMsg] = useState(null);
+  const [cachedInfo, setCachedInfo] = useState("");
 
-  const handleSubmit = async (FormData) => {
-    const userInput = await FormData.get("textinput");
+  const handleSubmit = async (inputData) => {
+    const userInput = await inputData.get("textinput");
 
     setIsLoading(true);
 
     setMessages((prev) => [...prev, { content: userInput, role: "user" }]);
 
-    const result = await chain.invoke({
-      userInput: userInput,
-      history: messages,
-    });
-    console.log(result);
+    const result = await useChain(userInput, messages, cachedInfo);
+
+    setCachedInfo(result.newCache);
 
     setMessages((prev) => [
       ...prev,
