@@ -1,6 +1,7 @@
 import { useState } from "react";
 import { Message } from "./components/Message";
 import { useChain } from "./langchain/chains/chains";
+import "./styles/styles.scss";
 
 function App() {
   const [messages, setMessages] = useState([]);
