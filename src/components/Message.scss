@@ -1,16 +1,52 @@
+@use "../styles/variables" as *;
+
 .message {
   width: fit-content;
   max-width: 80%;
   padding: 1em;
-  border-radius: 6px;
-  box-shadow: -1px 1px 4px lightgrey;
+  border-radius: $rounding;
+  box-shadow: -1px 1px 2px rgb(175, 175, 175);
+  position: relative;
+
+  &__sender {
+    font-size: $font-standard-size;
+  }
+
+  &__content {
+    font-size: $font-standard-size;
+  }
+
   &--user {
     align-self: flex-end;
-    background-color: aquamarine;
+    background-color: $color-primary;
+
+    &::after {
+      position: absolute;
+      content: "";
+      right: -10px;
+      bottom: 10px;
+      border: 10px solid transparent;
+      border-left-color: $color-primary;
+      border-right: 0;
+      border-bottom: 0;
+      box-shadow: $shadow-small;
+    }
   }
 
   &--assistant {
     align-self: flex-start;
-    background-color: aliceblue;
+    background-color: $color-bot;
+
+    &::after {
+      position: absolute;
+      content: "";
+      left: -10px;
+      bottom: 10px;
+      border: 10px solid transparent;
+      border-right-color: $color-bot;
+      border-left: 0;
+      border-bottom: 0;
+      box-shadow: $shadow-small;
+    }
   }
 }

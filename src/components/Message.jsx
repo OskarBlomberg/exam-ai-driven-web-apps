@@ -7,7 +7,7 @@ export const Message = ({ role, content }) => {
     <article
       className={`message message--${isOwnMessage ? "user" : "assistant"}`}
     >
-      <h2 className="message__sender">{isOwnMessage ? "användare" : "bot"}</h2>
+      <h2 className="message__sender">{isOwnMessage ? "Användare" : "Bot"}</h2>
       <p className="message__content">{content}</p>
     </article>
   );
