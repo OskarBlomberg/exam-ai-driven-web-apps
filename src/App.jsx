@@ -6,7 +6,6 @@ import "./styles/styles.scss";
 function App() {
   const [messages, setMessages] = useState([]);
   const [isLoading, setIsLoading] = useState(false);
-  const [streamMsg, setStreamMsg] = useState(null);
   const [cachedInfo, setCachedInfo] = useState("");
 
   const handleSubmit = async (inputData) => {
@@ -35,10 +34,7 @@ function App() {
   return (
     <main className="chat">
       <h1>TechNova kundchat</h1>
-      <section className="chat__messages">
-        {allMsgs}
-        {streamMsg && <Message content={streamMsg} role="assistant" />}
-      </section>
+      <section className="chat__messages">{allMsgs}</section>
       <form className="chat__form" action={handleSubmit}>
         <input
           className="chat__form__input"
