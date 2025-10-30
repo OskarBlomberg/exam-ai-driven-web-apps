@@ -1,5 +1,17 @@
 # Individuell examination - Kundtjänstbot TechNova AB
 
+## Egna kommentarer
+
+Detta är examinationen i Folkuniversitetets delkurs "Utveckling av AI-drivna webbapplikationer". Dessa kommentarer rör VG-kraven i slutet av detta dokument.
+
+### RunnableBranch
+
+Jag testade att använda funktionen RunnableBranch för att kunna utföra olika steg beroende på om det finns cachad information från vilken boten kan hämta informationen i stället för att göra en ny hämtning från Supabase.
+
+### JsonOutputParser
+
+Då jag ville att LLM-svaret för huruvida ett nytt anrop av databasen behövs skulle vara förutsägbart använde jag few shot prompting för att den skulle returnera ett JSON-objekt med en boolean. Då kunde jag dessutom passa på att testa JsonOutputParser för att enkelt nå JSON-svaret, på samma sätt som StringOutputParser vi gått igenom på lektionen hittade relevant sträng i svaret.
+
 ## Instruktioner
 
 Du ska utveckla en AI-baserad kundsupportassistent för ett fiktivt företag som säljer teknikprodukter online.
